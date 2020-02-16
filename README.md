@@ -38,7 +38,7 @@ $ git add <file-name> #Adds only the defined files to the snapshot
 Finally the added files should be snapshotted with the following command. Every snapshot should have a commit message that describes the changes. This message is given by the  *-m* parameter. 
 
 ```bash
-$ git commit -m "first commit"
+$ git commit -m "<commit-message>"
 ```
 After you've committed your changes, a message will display the number of changed files, deleted files and the inserted files. Besides this there will also be an unique git commit hash. This hash will be of great importance when we want to go back to this snapshot.
 
@@ -111,24 +111,74 @@ Some useful .gitignore patterns are shown below:
 
 ## Github
 Git and github are not the same. 
-Git is a version control system that can be locally used while Github on the other hand is a storage platform where you can upload and download your git work.
+Git is a version control system that can be locally used while Github on the other hand is an online storage platform where you can upload and download your git work. This can be extremely useful if you are working with others on the same project or in case you want to share your final code with others. 
 
-
+In order to link your local repository with the remote repository you have to add the online repository url in the following command. This url will be saved in the .git folder and will be used whenever you want to upload or download your progress online.
 ```bash
-$ git remote add origin <online-git-repository-url>.git
+$ git remote add origin <remote-git-repository-url>.git
 ```
 
 ### Push
-git push -u origin master
+Pushing means that you want your local git repository to be uploaded onto the remote repository. The first time you do this you have to specify which remote repository you want to use to track by the following command.
+```bash
+$ git push -u origin master
+```
+After the upstream is determined, you dont have to specify it every time and you can just use the following command to upload your code.
+```bash
+$ git push
+```
 
 ### pull
+Pulling is the opposite from pushing, meaning that you are downloading code from the remote repository onto the local repository. This is not usefull if you are developing as a single developer using a single desktop. But if you are working with multiple developers at the same time, some developers have already pushed new code that needs te be pulled before you can push your newly written code onto the branch.
+```bash
+$ git pull
+```
 
-### Clone and Fork 
+### Clone 
+On Github some repositories are publically accessable, just like this repository is publically available. This means that any user can download the repository. You can either download this repository as a zip file using the github gui or you can use the command line to clone the repository into the desired location. The clone command can also be used to make a local copy of another local repository at a different location. Meaning that with clone you can download repositories from online or move local repositories.
+```bash
+$ git clone <remote-git-repository-url> #download remote repository
+$ git clone <local-git-path> #Copy local repository
+```
 
 ## Cheat sheet
+
 ### Git
-git log
+```bash
+$ git --version #Displays the installed git version on this machine
+$ git init    #Initialize a new git repository. Can only start from an empty folder.
+$ git add . # Stage all changed documents 
+$ git add <file-name> #Stage only the defined files
+$ git commit -m "<commit-message>" #Commit the staged files
+$ git status  #Displays the status of the current commit, including branch, modified files, staged files
+$ git log     #Displays a complete list of previous commits with hash, author details and commit message
+$ git checkout <git-hash> #Retrieve your work at the given git-hash
+$ git checkout master #Retrieve your work at the latest commit on the master branch
+$ git branch <branch-name> #Create a new branch with name <branch-name>
+$ git checkout -b <branch-name> #Create a new branch with name <branch-name>
+$ git branch #Display all branches by name
+$ git branch -d <branch-name> #Safe delete branch: only possible if the branch is fully merged
+$ git branch -D <branch-name> #Unsafe delete branch: Always possible
+$ git merge <branch-name> #Merge the named branch into the current branch. Possibly resulting in conflicts.
+```
 ### Github
+```bash
+$ git remote add origin <remote-git-repository-url>.git # Save the remote git url as variable name origin
+$ git push -u origin master #Explicitly push your git commits to the remote git url with variable name origin, only obligated the with the first push
+$ git push #Push your git commits to the remote git url with previous defined origin
+$ git pull #Pull git commits from the remote git url with previous defined origin
+$ git clone <remote-git-repository-url> #download remote repository
+$ git clone <local-git-path> #Copy local repository
+
+```
 ### .gitignore
+| Pattern  | explanation |
+| ------------- | ------------- |
+| \*\*/foo   | Don't track the folder foo anywhere in the structure |
+| \*.foo  | Don't track files with extention .foo |
+| \foo.foo  | Don't track the file foo with extention .foo in the root folder |
+| fo?.foo  | A questionmark marks exactly one character |
+| foo[1-3].foo  | square brackets match any character |
+
 
 

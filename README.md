@@ -64,10 +64,37 @@ Going back to the last commit can be done in a similar fashion where the git has
 $ git checkout master
 ```
 
-**Going back to a previous commit this way can be dangerous** and it is only adviced to do so when you want to visible see what you've done at this commit. This is because when you start to commit again from this point onwards, those new commits won't be saved on a branch. When you again checkout to you last commit with *git checkout master*, you wont be able to go back to the commits made from the previous point when you forgot the exact hash.
+**Going back to a previous commit by entering a git hash can be dangerous** and it is only adviced to do so when you want to visible see what you've done at this commit. This is because when you start to commit again from this point onwards, those new commits won't be saved on a branch. When you again checkout to you last commit with *git checkout master*, you wont be able to go back to the commits made from the previous point when you forgot the exact hash.
 
 ## Branches
+A branch is used during development to develop seperate parts of a program independendly from eachother. When a certain part of your code is working, you can choice to merge the branches together meaning that code from branch A will be included in branch B. This can be extremely useful if you need to consistenly have a working application. For example say we have a branch called deployment which contains only working code and another branch called development. During development of the code we only work on the development branch, or even on other branch created from the development branch. When the new update is fully working, we can merge the development branch into the deployment branch keeping only working and finished parts in the deployment branch. 
 
+Creating a branch is done with the *branch* command or with the same *checkout* command as going back to a previous snapshot. Using the *checkout* command with the *-b* makes a new branch from the current snapshot. You can also make a branch starting from a previous commit by first going to a specific commit using the git hash followed by creating a branch with the command below. It is even possible to combine going back to a previous commit and creating a new branch with a single *checkout* command.
+```bash
+#Both commands are equivallent
+$ git branch <branch-name>
+$ git checkout -b <branch-name>
+```
+
+If you want to show an overview of all branches you can use the following command without any branch name. 
+```bash
+$ git branch
+```
+If you try this command yourself you see that the result will show a branch called master. This is the main branch and in previous chapter we actually used this to go to the latest commit.  
+
+You can delete a branch with the following command.
+```bash
+$ git branch -d <branch-name> #Safe delete: only possible if the branch is fully merged
+$ git branch -D <branch-name> #Unsafe delete: Always possible
+```
+
+Merging branches can be a bit tricky because you have to be carefully which branch you merge into which branch. Retaking the previous example of a deployment and development branch. First you go to the deployment branch because this branch has to include code from another branch, namely the development branch. Then you use the following command to include code from the development branch into deployment branch.
+
+```bash
+$ git checkout <branch-name>  #$ git checkout deployment
+$ git merge <branch-name>     #$ git merge development
+```
+This command will fail if changes were made and committed in both the development and the deployment branch and those changes cannot be resolved automatically. If this occures you are obligated to go to your source code. The source code will contain a some new line containing *<<<<<<< HEAD*, *=======* and *>>>>>>>*. This is the place where the conlict occurce and you have to manually remove the wrong codes. After resolving the conlicts you have to make a new commit and the merge will finish successfully. 
 
 ## Fork
 

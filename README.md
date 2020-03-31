@@ -1,4 +1,4 @@
-# Git_Demo
+# Git Guide
 
 After reading this tutorial you should understand the basic git commands. 
 

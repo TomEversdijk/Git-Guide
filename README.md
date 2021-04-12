@@ -96,7 +96,7 @@ This command will fail if changes were made and committed in both the developmen
 
 
 ### .gitignore
-Sometimes you dont want to keep track of all the files in your project. This can be done by creating a .gitignore file which contains information about the files that should **not** be tracked. 
+Sometimes you dont want to keep track of all the files in your project. (e.g: files containing sensitive information or passwords) This can be done by creating a .gitignore file which contains information about the files that should **not** be tracked. 
 Some useful .gitignore patterns are shown below:
 | Pattern  | explanation |
 | ------------- | ------------- |
@@ -105,6 +105,8 @@ Some useful .gitignore patterns are shown below:
 | \foo.foo  | Don't track the file foo with extention .foo in the root folder |
 | fo?.foo  | A questionmark marks exactly one character |
 | foo[1-3].foo  | square brackets match any character |
+
+It is important to include files in the .gitignore before your first commit after creating this file. If you create a file, make a commit and after commiting changes the .gitignore, the newly created file will still be tracked in subsequent commits.
 
 ## Github
 Git and github are not the same. 

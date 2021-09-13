@@ -158,6 +158,7 @@ $ git checkout -b <branch-name> #Create a new branch with name <branch-name>
 $ git branch #Display all branches by name
 $ git branch -d <branch-name> #Safe delete branch: only possible if the branch is fully merged
 $ git branch -D <branch-name> #Unsafe delete branch: Always possible
+$ git fetch origin # Fetch all existing branches from the remote repository
 $ git merge <branch-name> #Merge the named branch into the current branch. Possibly resulting in conflicts.
 ```
 ### Github

@@ -127,8 +127,8 @@ After the upstream is determined, you dont have to specify it every time and you
 $ git push
 ```
 
-### pull
-Pulling is the opposite from pushing, meaning that you are downloading code from the remote repository onto the local repository. This is not usefull if you are developing as a single developer using a single desktop. But if you are working with multiple developers at the same time, some developers have already pushed new code that needs te be pulled before you can push your newly written code onto the branch.
+### Pull
+Pulling is the opposite from pushing, meaning that you are downloading code from the remote repository onto the local repository. This is not useful if you are developing as a single developer using a single desktop. But if you are working with multiple developers at the same time, some developers have already pushed new code that needs te be pulled before you can push your newly written code onto the branch.
 ```bash
 $ git pull
 ```

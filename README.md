@@ -37,7 +37,7 @@ Finally the staged files should be snapshotted with the following command. Every
 ```bash
 $ git commit -m "<commit-message>"
 ```
-After you've committed your changes, a message will display the number of changed files, deleted files and the inserted files. Besides this there will also be an unique git commit hash. This hash will be of great importance when you want to go back to this snapshot.
+After you've committed your changes, a message will display the number of changed files, deleted files and the inserted files. Besides this there will also be a unique git commit hash. This hash will be of great importance when you want to go back to this snapshot.
 
 If you aren't ready to commit yet, but want an overview of the current status of your git project, you can do so by typing the following command. 
 ```bash
@@ -45,7 +45,7 @@ $ git status
 ```
 This will display the modified files, the staged file and the current branch you're working on. (Branches will be explained below)
 
-### checkout
+### Checkout
 Besides getting an overview of the current status, it is useful the get some information about the status of previous snapshots. This can be retrieved with the following command. 
 ```bash
 $ git log
@@ -57,19 +57,19 @@ In order to go back to a previous snapshot you have to use the checkout command 
 $ git checkout <git-hash> #e.g. $ git checkout da232268df22f3077ce8665ba16bc6efaf49c41f
 ```
 After this command all files within the git folder should have been changed to their original state as they were when this snapshot was originally made.  
-Going back to the last commit can be done in a similar way where the git hash should be replaced with master.
+Going back to the last commit can be done in a similar way where the git hash should be replaced with the branch name (mostly main).
 ```bash
-$ git checkout master
+$ git checkout main
 ```
 
 **Going back to a previous commit by entering a git hash can be dangerous** and it is only advised to do so when you want to visibly see what you've done at this commit. This is because when you start to commit again from this point onwards, the new commits won't be saved on a branch. When you again checkout to you last commit with `git checkout master`, you wont be able to go back to the commits made from the previous point when you forgot the exact hash.
 
 ### Branches
-A branch is used during development to develop seperate parts of a program independendly from eachother. When a certain part of your code is working, you can chose to merge the branches together meaning that code from branch A will be included in branch B. This can be extremely useful if you need to have a consistenly working application. For example say we have a branch called deployment which contains only working code and another branch called development. During development of the code we only work on the development branch, or even on another branch created from the development branch. When the new update is fully working, we can merge the development branch into the deployment branch keeping only working and finished parts in the deployment branch. 
+A branch is used during development to develop separate parts of a program independently from each-other. When a certain part of your code is working, you can chose to merge the branches together meaning that code from branch A will be included in branch B. This can be extremely useful if you need to have a consistently working application. For example say we have a branch called deployment which contains only working code and another branch called development. During development of the code we only work on the development branch, or even on another branch created from the development branch. When the new update is fully working, we can merge the development branch into the deployment branch keeping only working and finished parts in the deployment branch. 
 
 Creating a branch is done with the `branch` command or with the same `checkout` command as going back to a previous snapshot. Using the `checkout` command with the `-b` makes a new branch from the current snapshot and is safe to use. You can also make a branch starting from a previous commit by first going to a specific commit using the git hash followed by creating a branch with the command below.
 ```bash
-#Both commands are equivallent
+#Both commands are equivalent
 $ git branch <branch-name> #Branch from the current state
 $ git checkout <git-hash> -b <branch-name> #Branch from the state with corresponding git-hash.
 ```
@@ -92,11 +92,11 @@ Merging branches can be a bit tricky because you have to be careful which branch
 $ git checkout <branch-name>  #$ git checkout deployment
 $ git merge <branch-name>     #$ git merge development
 ```
-This command will fail if changes were made and committed in both the development and the deployment branch and those changes cannot be resolved automatically. If this occures you are obligated to go to your source code. The source code will contain some new lines with `<<<<<<< HEAD`, `=======` and `>>>>>>>`. This is the place where the conlict occurces and you have to manually remove the wrong code. After resolving the conlicts you have to make a new commit and the merge will finish successfully. 
+This command will fail if changes were made and committed in both the development and the deployment branch and those changes cannot be resolved automatically. If this occurs you are obligated to go to your source code. The source code will contain some new lines with `<<<<<<< HEAD`, `=======` and `>>>>>>>`. This is the place where the conflict occurred and you have to manually remove the wrong code. After resolving the conflicts you have to make a new commit and the merge will finish successfully. 
 
 
 ### .gitignore
-Sometimes you dont want to keep track of all the files in your project. (e.g: files containing sensitive information or passwords) This can be done by creating a .gitignore file which contains information about the files that should **not** be tracked. 
+Sometimes you don't want to keep track of all the files in your project. (e.g: files containing sensitive information or passwords) This can be done by creating a .gitignore file which contains information about the files that should **not** be tracked. 
 Some useful .gitignore patterns are shown below:
 | Pattern  | explanation |
 | ------------- | ------------- |

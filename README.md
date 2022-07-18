@@ -134,7 +134,7 @@ $ git pull
 ```
 
 ### Clone 
-On Github some repositories are publically accessable, just like this repository is publically available. This means that any user can download the repository. You can either download this repository as a zip file using the github gui or you can use the command line to clone the repository into the desired location. The clone command can also be used to make a local copy of another local repository at a different location. Meaning that with clone you can download repositories from online or move local repositories.
+On Github or other remotes, some repositories are publicly accessible, just like this repository is publically available. This means that any user can download the repository. You can either download this repository as a zip file using the github gui or you can use the command line to clone the repository into the desired location. The clone command can also be used to make a local copy of another local repository at a different location. Meaning that with clone you can download repositories from online or move local repositories.
 ```bash
 $ git clone <remote-git-repository-url> #download remote repository
 $ git clone <local-git-path> #Copy local repository
